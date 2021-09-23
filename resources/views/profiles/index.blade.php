@@ -14,11 +14,9 @@
                     <div class="d-flex align-items-center pb-3">
                         <div class="h4">{{$user->username}}</div>
 
-                                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}">Follow</follow-button>
-                                <example-component></example-component>
-                                @yield('example-component')
-
-                        <example-component></example-component>
+                        <div id="app">
+                                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                        </div>
 
                     </div>
 
@@ -36,19 +34,9 @@
             @endcan
 
             <div class="d-flex">
-
-            <div class="pr-5">
-                <strong >{{$user->posts->count()}}</strong> posts
-            </div>
-
-            <div class="pr-5">
-                <strong> {{$user->profile->followers->count()}}</strong> Followers
-            </div>
-
-            <div class="pr-5">
-                <strong>{{$user->following->count()}} </strong> Following
-            </div>
-
+                <div class="pr-5"><strong>{{ $postCount }}</strong> posts</div>
+                <div class="pr-5"><strong>{{ $followersCount }}</strong> followers</div>
+                <div class="pr-5"><strong>{{ $followingCount }}</strong> following</div>
             </div>
 
             <div class="pt-4 font-weight-bold">
@@ -67,7 +55,7 @@
     <div class="row pt-5">
     @foreach($user->posts as $post)
 
-        <div class="col-4">
+        <div class="col-4 mt-5">
             <a  href="/cms/public/p/{{$post->id}}">
                 <img  src="/cms/public/storage/{{$post->image}}" class="w-100"/>
             </a>

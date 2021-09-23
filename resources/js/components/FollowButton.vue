@@ -6,37 +6,32 @@
 
 <script>
 export default {
-    name:'follow-button',
-    props:['user_id', 'follows'],
-
+    props: ['userId', 'follows'],
     mounted() {
         console.log('Component mounted.')
     },
-
     data: function () {
-
         return {
             status: this.follows,
         }
-},
+    },
     methods: {
         followUser() {
-         axios.post("/cms/public/follow/" + this.user_id)
-            .then(response => {
-                this.status = !this.status;
-                console.log(response.data);
-            })
-            .catch(errors=> {
-                if(errors.response.status == 401) {
-                    window.location = "/cms/public/login";
-                }
-            })
-        },
+            axios.post('/cms/public/follow/' + this.userId)
+                .then(response => {
+                    this.status = ! this.status;
+                    console.log(response.data);
+                })
+                .catch(errors => {
+                    if (errors.response.status == 401) {
+                        window.location = '/login';
+                    }
+                });
+        }
     },
     computed: {
-        buttonText()
-        {
-            return (this.status) ? "Unfollow" : "Follow";
+        buttonText() {
+            return (this.status) ? 'Unfollow' : 'Follow';
         }
     }
 }

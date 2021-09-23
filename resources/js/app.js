@@ -1,4 +1,4 @@
-window.Vue = require('vue');
+import Vue from 'vue'
 require('./bootstrap');
 import FollowButton from './components/FollowButton.vue'
 
@@ -7,7 +7,7 @@ import FollowButton from './components/FollowButton.vue'
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-
+Vue.component('follow-button', require('./components/FollowButton.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
